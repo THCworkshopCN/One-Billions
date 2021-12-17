@@ -39,11 +39,11 @@ class app(object):
                 if event.key == K_F11:
                     if not isfullscreen:
                         isfullscreen = True
-                        SIZE = screen_width, screen_height =  pygame.display.list_modes()[0]
+                        screen_size = screen_width, screen_height =  pygame.display.list_modes()[0]
                         screen = pygame.display.set_mode(screen_size, FULLSCREEN)
                     else:
                         isfullscreen = False 
-                        SIZE = screen_width, screen_height = 1000, 800
+                        screen_size = screen_width, screen_height = 1000, 800
                         screen = pygame.display.set_mode((screen_width, screen_height), RESIZABLE)
                 pygame.event.post(event)
             return isfullscreen
