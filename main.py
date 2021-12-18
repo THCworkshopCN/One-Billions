@@ -13,6 +13,8 @@ import pygame
 from pygame.constants import *
 from pygame.locals import *
 pygame.init()
+import json
+import json_minify
 
 print(i18n.trans("output.loading_modules"))
 from modules import events, global_values as gv
@@ -23,22 +25,23 @@ events._init()
 print(i18n.trans("output.loading_classes"))
 #Class definations
 from modules import classes
+#Main program
 import app
 
 def main(): #主程序过程
     global app,isfullscreen
     app._init()
     app.startup.startup()
-    isfullscreen = gv.get("isfullscreen")
+    isfullscreen = None
     while True:  #主循环
-        isfullscreen = app.basic_display.resize(isfullscreen)
+        isfullscreen = app.basic_display.resize(isfullscreen) #判断窗口大小是否改变
         for event in pygame.event.get(): #循环开始
             if event.type == QUIT: #退出事件
                 pygame.quit()
                 sys.exit()
         #循环末尾
         app.basic_display.renderer().render()
-        pygame.display.update() #更新画面
+        pygame.display.flip() #更新画面
 
 if __name__ == "__main__":
     main()

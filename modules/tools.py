@@ -3,6 +3,7 @@
 """
 工具箱
 """
+from modules import global_values as gv
 
 def get_type(variate:any) -> str:
     """判断值的类型"""
@@ -16,5 +17,7 @@ def get_type(variate:any) -> str:
     elif isinstance(variate,set): type = "set"
     return type
 
-def screen_center():
-    from pygame import display
+def CENTER():
+    screen_width, screen_height = gv.get("screen_size")
+    CENTER = (screen_width/2, screen_height/2)
+    return CENTER

@@ -9,6 +9,7 @@ from pygame.locals import *
 from modules import events
 from app import basic_display
 from app import integrated_display_functions as display
+from modules.tools import CENTER
 
 
 def startup() -> None:
@@ -18,12 +19,12 @@ def startup() -> None:
     screen_size = gv.get("screen_size")
     screen_width = gv.get("screen_width")
     screen_height = gv.get("screen_height")
-    
     events.program_start().announce()
     isfullscreen = False
     gv.set("isfullscreen",isfullscreen)
-    screen = pygame.display.set_mode(screen_size,RESIZABLE)
-    gv.set("screen",screen)
     pygame.display.set_caption("One Billions")
     basic_display.renderer().fill((104,204,255))
-    display.render_text("百亿分之一")
+    display.render_text("百亿分之一",0,80,location=CENTER(),location_type="middle",background_color=(0,0,0))
+    display.render_text("百亿分之2",2,60,location=CENTER(),location_type="middle",background_color=(0,0,0))
+    display.render_text("百亿分之3",1,70,location=CENTER(),location_type="middle",background_color=(0,0,0))
+    display.render_text("百亿分之4",3,50,location=CENTER(),location_type="middle",background_color=(0,0,0))
