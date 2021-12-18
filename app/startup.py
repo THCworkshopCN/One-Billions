@@ -2,6 +2,7 @@
 # Copyright (C) 2021 THCWorkshopCN
 """程序启动模块"""
 
+from pygame import font
 from modules import classes, events
 from modules import global_values as gv
 import pygame
@@ -26,5 +27,5 @@ def startup() -> None:
     screen = pygame.display.set_mode(screen_size,RESIZABLE)
     gv.set("screen",screen)
     pygame.display.set_caption("One Billions")
-    screen.fill((104,204,255))
-    display.render_text("One Billions")
+    basic_display.renderer().fill((104,204,255))
+    display.render_text("百亿分之一")

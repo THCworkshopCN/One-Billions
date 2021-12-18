@@ -36,7 +36,7 @@ def main(): #主程序过程
                 pygame.quit()
                 sys.exit()
         #循环末尾
-        #app.display.renderer.render()
+        app.basic_display.renderer().render()
         pygame.display.update() #更新画面
 
 if __name__ == "__main__":
