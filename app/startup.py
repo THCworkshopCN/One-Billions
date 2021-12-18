@@ -9,6 +9,7 @@ from pygame.locals import *
 from modules import events
 from modules import classes
 from app import basic_display
+from app import integrated_display_functions as display
 
 
 def startup() -> None:
@@ -26,4 +27,4 @@ def startup() -> None:
     gv.set("screen",screen)
     pygame.display.set_caption("One Billions")
     screen.fill((104,204,255))
-    basic_display.render_text("One Billions")
+    display.render_text("One Billions")

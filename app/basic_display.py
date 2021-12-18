@@ -18,11 +18,6 @@ def _init():
     gv.set("screen_width",screen_width)
     gv.set("screen_height",screen_height)
 
-def render_text(_text:str,size:int=50,location:tuple=(0,0),color=(255,255,255),font:str="等线Light") -> classes.display.display_map:
-    text = pygame.font.SysFont(font,size)
-    text_fmt = text.render(_text,True,color)
-    screen.blit(text_fmt,location)
-
 class renderer(object):
     def __init__(self) -> None:
         pass
