@@ -1,4 +1,4 @@
-zh_CN:
-  loading_libraries: "正在加载依赖库..."
-  loading_modules: "正在加载模块..."
-  loading_classes: "正在加载类..."
+zh_TW:
+  loading_libraries: "正在載入依賴庫..."
+  loading_modules: "正在載入模組..."
+  loading_classes: "正在載入類..."
