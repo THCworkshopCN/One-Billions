@@ -2,13 +2,11 @@
 # Copyright (C) 2021 THCWorkshopCN
 """程序启动模块"""
 
-from pygame import font
 from modules import classes, events
 from modules import global_values as gv
 import pygame
 from pygame.locals import *
 from modules import events
-from modules import classes
 from app import basic_display
 from app import integrated_display_functions as display
 

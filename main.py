@@ -3,8 +3,9 @@
 """程序入口"""
 import sys
 sys.dont_write_bytecode = True
+from modules import i18n
 
-print("Loading libraries...")
+print(i18n.trans("output.loading_libraries"))
 #Threading
 import threading
 #Pygame
@@ -13,13 +14,13 @@ from pygame.constants import *
 from pygame.locals import *
 pygame.init()
 
-print("Loading modules...")
+print(i18n.trans("output.loading_modules"))
 from modules import events, global_values as gv
 gv._init()
 from modules import tools
 from modules import events
 events._init()
-print("Loading classes...")
+print(i18n.trans("loading_classes"))
 #Class definations
 from modules import classes
 import app

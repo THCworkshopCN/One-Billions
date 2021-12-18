@@ -1,11 +1,10 @@
 # -*- coding:utf-8-*
 # Copyright (C) 2021 THCWorkshopCN
-from modules import classes, events
+from modules import events,classes
 from modules import global_values as gv
 import pygame
 from pygame.locals import *
 from modules import events
-from modules import classes
 from app import basic_display
 
 def render_text(
@@ -20,7 +19,7 @@ def render_text(
         if font is not None:
             text = pygame.font.Font(font,size)
         else:
-            text = pygame.font.Font(".\\fonts\\SourceHanSans-Light.otf",size)
+            text = pygame.font.Font("./fonts/SourceHanSans-Light.otf",size)
     text_fmt = text.render(_text,_antialias,color)
     textpos = text_fmt.get_rect()
     textpos.center = text_fmt.get_rect().center

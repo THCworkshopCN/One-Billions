@@ -2,6 +2,7 @@
 # Copyright (C) 2021 THCWorkshopCN
 """类的定义"""
 
+
 class display(object):
     """改变呈现出的画面"""
     pass
