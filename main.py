@@ -20,7 +20,7 @@ gv._init()
 from modules import tools
 from modules import events
 events._init()
-print(i18n.trans("loading_classes"))
+print(i18n.trans("output.loading_classes"))
 #Class definations
 from modules import classes
 import app
