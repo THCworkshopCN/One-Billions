@@ -24,7 +24,5 @@ def startup() -> None:
     gv.set("isfullscreen",isfullscreen)
     pygame.display.set_caption("One Billions")
     basic_display.renderer().fill((104,204,255))
-    display.render_text("百亿分之一",0,80,location=CENTER(),location_type="middle",background_color=(0,0,0))
-    display.render_text("百亿分之2",2,60,location=CENTER(),location_type="middle",background_color=(0,0,0))
-    display.render_text("百亿分之3",1,70,location=CENTER(),location_type="middle",background_color=(0,0,0))
-    display.render_text("百亿分之4",3,50,location=CENTER(),location_type="middle",background_color=(0,0,0))
+    display.render_text("十亿分之一",0,80,location=CENTER(),location_type="middle",background_color=(0,0,0))
+    #UNFINISHED
