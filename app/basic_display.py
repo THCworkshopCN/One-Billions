@@ -14,7 +14,6 @@ import operator
 @jit
 def objl_sort():
     global object_list
-    edited_objl = None
     return sorted(object_list, key=operator.itemgetter("layer"))
 
 tk = tkinter.Tk()
