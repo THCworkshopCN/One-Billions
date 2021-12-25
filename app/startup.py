@@ -20,6 +20,8 @@ def startup() -> None:
     screen_width = gv.get("screen_width")
     screen_height = gv.get("screen_height")
     events.program_start().announce()
+    fps = gv.get("fps")
+    fps.tick(3)
     isfullscreen = False
     gv.set("isfullscreen",isfullscreen)
     pygame.display.set_caption("One Billions")

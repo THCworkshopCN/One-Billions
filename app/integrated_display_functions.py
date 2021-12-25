@@ -7,6 +7,7 @@ import pygame
 from pygame.locals import *
 from modules import events
 from app import basic_display
+from app.locals import *
 
 def render_text(
     _text:str, layer:int=0, size:int=50, location:tuple=(0,0), color=(255,255,255), location_type:str = "middle", sysfont:str = None, font:str=None, _antialias:bool=True,background_color:tuple = None,
@@ -25,11 +26,7 @@ def render_text(
     if location_type == "middle":
         text_fmt_rect = text_img.get_rect()
         location_x, location_y = location
-        print("width: ",text_fmt_rect.width," height: ",text_fmt_rect.height)
-        print("topleft: ",text_fmt_rect.topleft," topright: ",text_fmt_rect.topright)
-        print("bottomleft: ",text_fmt_rect.bottomleft," bottomright: ",text_fmt_rect.bottomright)
         location_x -= text_fmt_rect.width/2
         location_y -= text_fmt_rect.height/2
         location = (location_x,location_y)
-        print("location: ",location)
     basic_display.renderer().addobject(text_img,location,layer,"text_img")
