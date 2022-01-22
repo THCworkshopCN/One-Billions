@@ -1,7 +1,8 @@
 # -*- coding:utf-8-*
-# Copyright (C) 2021 THCWorkshopCN
+# Copyright (C) 2021-2022 THCWorkshopCN
 """程序启动模块"""
 
+from app.locals import REAL_HEIGHT, REAL_WIDTH
 from modules import classes, events
 from modules import global_values as gv
 import pygame
@@ -24,5 +25,5 @@ def startup() -> None:
     gv.set("isfullscreen",isfullscreen)
     pygame.display.set_caption("One Billions")
     basic_display.renderer().fill((104,204,255))
-    display.render_text("十亿分之一",0,80,location=CENTER(),location_type="middle",background_color=(0,0,0))
+    display.render_text("十亿分之一",0,80,location=(REAL_WIDTH/2,REAL_HEIGHT/2),location_type="middle",background_color=(0,0,0))
     #UNFINISHED

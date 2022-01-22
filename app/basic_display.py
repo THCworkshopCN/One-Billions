@@ -1,5 +1,5 @@
 # -*- coding:utf-8-*
-# Copyright (C) 2021 THCWorkshopCN
+# Copyright (C) 2021-2022 THCWorkshopCN
 """基础的显示模块"""
 
 from modules import classes,events
@@ -7,12 +7,9 @@ from modules import global_values as gv
 import pygame
 from pygame.locals import *
 import tkinter
-import numpy as np
-from numba import jit
 import operator
 from app.locals import *
 
-@jit
 def objl_sort():
     global object_list
     return sorted(object_list, key=operator.itemgetter("layer"))
@@ -38,16 +35,19 @@ def _init():
     global backup_screen_size
     backup_screen_size = screen_size
     gv.set("backup_screen_size",backup_screen_size)
+    calculate_d_ratio()
 
 def calculate_d_ratio() -> classes.display.display_map:
     """重新计算显示大小与真实大小的比值，用于缩放"""
-    global d_width_ratio, d_height_ratio, d_ratio
+    global d_width_ratio, d_height_ratio, d_ratio, screen_width, screen_height, screen_size
+    screen_width, screen_height = screen_size
     d_width_ratio = screen_width/REAL_WIDTH
     d_height_ratio = screen_height/REAL_HEIGHT
     d_ratio = (d_width_ratio, d_height_ratio)
     gv.set("d_ratio",d_ratio)
     gv.set("d_width_ratio",d_width_ratio)
     gv.set("d_height_ratio",d_height_ratio)
+    print((d_width_ratio,d_height_ratio))
 
 class renderer(object):
     """与画面呈现直接有关的函数"""
@@ -56,22 +56,29 @@ class renderer(object):
         global object_list
     def addobject(self,_source,location,layer:int=0,name = None) -> classes.display.display_map:
         """往渲染列表中添加object"""
-        args = {"_source":_source,"location":location,"layer":layer,"d_ratio":d_ratio,"name":name}
+        args = {"_source":_source,"location":location,"layer":layer,"d_ratio":d_ratio,"name":name,"initial_source":_source,"initial_location":location}
         object_list.append(args)
     def fill(self,color:tuple):
         global _fill_R, _fill_G, _fill_B
         _fill_R, _fill_G, _fill_B = color
-    def render(self) -> classes.display:
-        """渲染画面"""
+    def smart_render(self) ->classes.display:
+        """自动检测画面中需要渲染的部分并进行渲染"""
+        pass
+    def rerender(self) -> classes.display:
+        """对画面进行彻底的重新渲染"""
         #将列表按优先级进行排列，实现图层覆盖
         object_list = objl_sort()
         screen.fill((_fill_R,_fill_G,_fill_B))
         for i in range(len(object_list)):
             if object_list[i]["d_ratio"] != d_ratio: #判断元素在渲染前是否需要缩放与位置更改
-                pass #UNFINISHED
+                initial_source = object_list[i]["initial_source"]
+                rect = initial_source.get_rect()
+                new_size = rect.width*d_width_ratio, rect.height*d_height_ratio
+                object_list[i]["_source"] = pygame.transform.scale(initial_source,new_size)
+                my_location = object_list[i]["initial_location"]
+                object_list[i]["location"] = my_location[0]*d_width_ratio, my_location[1]*d_height_ratio
+                object_list[i]["d_ratio"] = d_ratio
             screen.blit(object_list[i]["_source"],object_list[i]["location"])
-    class event_handler(object):
-        pass
 
 def resize(isfullscreen) -> classes.display:
     resized = False
@@ -109,5 +116,5 @@ def resize(isfullscreen) -> classes.display:
             pygame.event.post(event)
             #BUG :按F11进入全屏并取消全屏后，尽管重新声明了RESIZABLE，但无法再改变窗口大小
     if resized:
-        renderer.render()
+        renderer().rerender()
     return isfullscreen

@@ -1,5 +1,5 @@
 # -*- coding:utf-8-*-
-# Copyright (C) 2021 THCWorkshopCN
+# Copyright (C) 2021-2022 THCWorkshopCN
 """
 用于程序间变量通信的模块 或者说，用于管理全局变量的模块
 """

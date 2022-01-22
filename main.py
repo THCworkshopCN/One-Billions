@@ -1,5 +1,5 @@
 # -*- coding:utf-8-*-
-# Copyright (C) 2021 THCWorkshopCN
+# Copyright (C) 2021-2022 THCWorkshopCN
 """程序入口"""
 import sys
 sys.dont_write_bytecode = True
@@ -27,7 +27,7 @@ print(i18n.trans("output.loading_classes"))
 from modules import classes
 #Main program
 import app
-
+app._init()
 def main(): #主程序过程
     global app,isfullscreen
     app._init()
@@ -40,7 +40,7 @@ def main(): #主程序过程
                 pygame.quit()
                 sys.exit()
         #循环末尾
-        app.basic_display.renderer().render()
+        app.basic_display.renderer().rerender()
         pygame.display.flip() #更新画面
 
 if __name__ == "__main__":

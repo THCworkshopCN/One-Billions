@@ -1,5 +1,5 @@
 # -*- coding:utf-8-*
-# Copyright (C) 2021 THCWorkshopCN
+# Copyright (C) 2021-2022 THCWorkshopCN
 
 from modules import events,classes
 from modules import global_values as gv
@@ -25,11 +25,7 @@ def render_text(
     if location_type == "middle":
         text_fmt_rect = text_img.get_rect()
         location_x, location_y = location
-        print("width: ",text_fmt_rect.width," height: ",text_fmt_rect.height)
-        print("topleft: ",text_fmt_rect.topleft," topright: ",text_fmt_rect.topright)
-        print("bottomleft: ",text_fmt_rect.bottomleft," bottomright: ",text_fmt_rect.bottomright)
         location_x -= text_fmt_rect.width/2
         location_y -= text_fmt_rect.height/2
         location = (location_x,location_y)
-        print("location: ",location)
     basic_display.renderer().addobject(text_img,location,layer,"text_img")

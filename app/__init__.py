@@ -1,5 +1,5 @@
 # -*- coding:utf-8-*
-# Copyright (C) 2021 THCWorkshopCN
+# Copyright (C) 2021-2022 THCWorkshopCN
 """程序主体"""
 
 from app import basic_display
