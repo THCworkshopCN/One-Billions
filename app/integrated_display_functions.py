@@ -7,6 +7,7 @@ import pygame
 from pygame.locals import *
 from modules import events
 from app import basic_display
+from app.locals import *
 
 def render_text(
     _text:str, layer:int=0, size:int=50, location:tuple=(0,0), color=(255,255,255), location_type:str = "middle", sysfont:str = None, font:str=None, _antialias:bool=True,background_color:tuple = None,
