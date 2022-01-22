@@ -4,7 +4,6 @@
 
 from app import basic_display
 basic_display._init()
-from app import startup
 
 def _init():
     """开始加载模块"""

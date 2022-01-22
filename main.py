@@ -27,11 +27,12 @@ print(i18n.trans("output.loading_classes"))
 from modules import classes
 #Main program
 import app
+import startup
 app._init()
 def main(): #主程序过程
     global app,isfullscreen
     app._init()
-    app.startup.startup()
+    startup.startup()
     isfullscreen = None
     while True:  #主循环
         isfullscreen = app.basic_display.resize(isfullscreen) #判断窗口大小是否改变
